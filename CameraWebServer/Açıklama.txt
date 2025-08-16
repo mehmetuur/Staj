@@ -1,0 +1,31 @@
+=== 2.3.2 GELİŞTİRME (ESP32 + Nmap) ===
+
+[1] ESP32 KURULUMU
+    -> Arduino IDE üzerinden hazır "ESP32-CAM WebServer" örneği yüklendi.
+    -> Cihaz Wi-Fi ağına bağlandı.
+    -> Seri monitör üzerinden IP adresi alındı (örnek: 192.168.1.45).
+
+[2] WEB ARAYÜZÜ TESTİ
+    -> Tarayıcı üzerinden ESP32’nin IP adresine bağlanıldı.
+    -> Örnek bağlantı: http://192.168.1.45
+    -> Gerçek zamanlı kamera yayını başarıyla test edildi.
+
+[3] NMAP PORT TARAMASI
+    -> Hedef cihaz IP’si: 192.168.1.45
+    -> Kullanılan komutlar:
+
+       nmap 192.168.1.45            # Temel tarama
+       nmap -sV 192.168.1.45        # Servis ve versiyon bilgisi
+       sudo nmap -O 192.168.1.45    # İşletim sistemi tespiti
+       nmap -p- 192.168.1.45        # Tüm portlar
+       nmap -sn 192.168.1.0/24      # Ağdaki cihazları keşfetme
+
+    -> Sonuç: ESP32 üzerinde 80/TCP (HTTP) portu açık bulundu.
+    -> Açık portlar üzerinden web arayüzüne erişim sağlandı.
+
+[4] ESP32 Web Kameradan Tek Kare Alma (Snapshot)
+    curl http://192.168.1.45/capture -o esp32_kamera.jpg
+
+[5] ESP32 Web Kameradan Video Kaydı Alma
+    ffmpeg -i http://192.168.1.45:81/stream -t 00:01:00 -c copy esp32_video.mp4
+    -> 1 dakikalık video kaydedilir, süreyi -t ile ayarlayabilirsin.
