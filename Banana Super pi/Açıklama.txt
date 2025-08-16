@@ -1,0 +1,39 @@
+=== 2.5 Banana Pi Super Üzerinde Armbian Kurulumu ve Siber Güvenlik Laboratuvarı Kurulması ===
+
+2.5.2 GELİŞTİRME
+----------------
+[1] ARMBIAN KURULUMU
+    -> Banana Pi Super cihazına Armbian işletim sistemi yüklendi.
+    -> SD kart veya eMMC üzerinden cihaz başlatıldı.
+    -> Ağ bağlantısı doğrulandı:
+        ping 8.8.8.8
+        ip a
+
+[2] TEMEL AĞ ARAÇLARI KURULUMU
+    -> nmap kurulumu:
+        sudo apt update
+        sudo apt install nmap -y
+    -> arp-scan kurulumu:
+        sudo apt install arp-scan -y
+   
+
+[3] AĞ TARAMA VE ANALİZLER
+    -> Ağdaki cihazları keşfetme:
+        sudo arp-scan --localnet
+    -> Port taraması:
+        nmap -sV 192.168.1.0/24
+    -> Ayrıntılı port ve servis taraması:
+        nmap -p- -A 192.168.1.0/24
+  
+
+[4] SİSTEM VE DONANIM TESTLERİ
+    -> CPU ve bellek durumunu izleme:
+        htop
+    -> Disk ve depolama kontrolü:
+        df -h
+   
+
+[5] SONUÇ
+    -> Armbian kurulumu tamamlandı ve cihaz ağa dahil edildi.
+    -> Laboratuvar ortamı aktif hale getirildi.
+    -> Ağ analiz ve testleri başarıyla çalıştırıldı, cihaz performansı gözlemlendi.
