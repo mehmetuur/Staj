@@ -1,0 +1,41 @@
+=== bWAPP Üzerinde Güvenlik Açığı Testleri ===
+
+1. bWAPP Kurulumu
+-----------------
+1. bWAPP’i indirin: https://sourceforge.net/projects/bwapp/
+2. XAMPP veya WAMP gibi bir local web sunucusu kurulum.
+3. bWAPP dosyalarını web sunucusunun htdocs (veya www) klasörüne kopyaladıktan sonra
+   Örnek: C:\xampp\htdocs\bWAPP MySQL’de bwapp adında veritabanı oluşturdum
+5. bWAPP/config/config.inc.php dosyasını düzenleyin:
+   $db_user = 'root';
+   $db_password = '';
+   $db = 'bwapp';
+6. Tarayıcıdan http://localhost/bWAPP/install.php adresine giderek kurulumu tamamlayın.
+7. Admin olarak giriş yapın.
+
+2. SQL Injection Testi
+----------------------
+1. bWAPP ana menü → "SQL Injection" sekmesine gidin.
+2. Örnek input alanına test sorguları girin:
+   - ' OR '1'='1
+   - ' OR '1'='1' -- 
+
+
+3. XSS (Cross-Site Scripting) Testi
+-----------------------------------
+1. bWAPP → "XSS (Reflected)" veya "XSS (Stored)" sekmesine gidin.
+2. Form alanına test script’i girin:
+   <script>alert('XSS')</script>
+3. Gönder tuşuna basın.
+
+4. Command Injection Testi
+--------------------------
+1. bWAPP → "Command Injection" sekmesine gidin.
+2. Input alanına test komutları girin:
+   - Linux: ; ls
+   - Windows: & dir
+3. Gönder tuşuna basın.
+
+
+
+
